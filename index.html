@@ -149,6 +149,15 @@
     }
 
     .cta:active { transform: translateY(0); }
+    .reveal {
+      margin: 28px auto 0;
+      color: #1d1d1f;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .reveal[hidden] { display: none; }
 
     .glass-panel {
       position: relative;
@@ -223,7 +232,8 @@
       <div class="message">
         <p class="eyebrow">Welcome</p>
         <h1 id="greeting">嗨嗨嗨，来了奥</h1>
-        <button class="cta" type="button" onclick="this.textContent='很高兴见到你'">了解更多</button>
+        <button id="greeting-action" class="cta" type="button">了解更多</button>
+        <p id="personal-message" class="reveal" hidden>我猜你是TJR</p>
       </div>
     </section>
   </main>
@@ -235,6 +245,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
