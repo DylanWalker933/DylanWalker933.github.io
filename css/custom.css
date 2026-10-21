@@ -1,11 +1,11 @@
-/* 全站视频背景 */
-#site-bg-video {
+/* 全站图片背景 */
+#site-bg-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  background: url('/media/background.jpg') center center / cover no-repeat;
   z-index: -2;
   pointer-events: none;
 }
