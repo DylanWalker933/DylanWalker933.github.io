@@ -1,555 +1,512 @@
+
+
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>未寻 | Senior Backend Engineer</title>
-    <meta name="description" content="资深后端工程师，专注于高并发、分布式系统架构设计">
-    <meta name="keywords" content="Java,Go,Python,微服务,分布式,架构师">
-    <meta name="theme-color" content="#0d1117">
-    <link rel="icon" type="image/svg+xml" href="static/img/avatar.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    <link rel="stylesheet" href="static/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
-</head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="DylanWalker933">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DylanWalker 的个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DylanWalker 的博客">
+<meta property="og:url" content="https://dylanwalker933.github.io/index.html">
+<meta property="og:site_name" content="DylanWalker 的博客">
+<meta property="og:description" content="DylanWalker 的个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="DylanWalker933">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>DylanWalker 的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dylanwalker933.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
 
 <body>
-    <div id="app">
-        <canvas id="particles"></canvas>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
+  
 
-        <div class="app-container">
-            <!-- 导航栏 -->
-            <nav class="navbar">
-                <div class="nav-brand">&lt;/&gt; {{ site.name }}</div>
-                <div class="nav-links">
-                    <a v-for="link in navLinks" :key="link.id" :href="'#' + link.id">{{ link.title }}</a>
-                </div>
-            </nav>
+  <header>
+    
 
-            <!-- Hero -->
-            <header class="hero">
-                <div class="hero-content">
-                    <div class="avatar-container">
-                        <img :src="profile.avatar" :alt="profile.name" class="avatar">
-                    </div>
-                    <h1 class="title">
-                        <span>{{ typedText }}</span><span class="cursor">|</span>
-                    </h1>
-                    <p class="subtitle">{{ profile.title }}</p>
-                    <p class="bio">{{ profile.bio }}</p>
-                    <div class="social-links">
-                        <a v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank"
-                            class="social-link" :title="social.name">
-                            <i :class="social.icon"></i>
-                        </a>
-                    </div>
-                </div>
-            </header>
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>DylanWalker 的博客</strong>
+    </a>
 
-            <main class="main-content">
-                <!-- About -->
-                <section id="about" class="section" :class="{ visible: visibleSections.about }">
-                    <div class="section-header">
-                        <i class="ri-user-star-line"></i>
-                        <h2>About Me</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="about-intro">
-                        <p>{{ about.intro }}</p>
-                    </div>
-                    <div class="about-grid">
-                        <div v-for="card in about.cards" :key="card.title" class="about-card">
-                            <div class="about-icon"><i :class="card.icon"></i></div>
-                            <h3>{{ card.title }}</h3>
-                            <p>{{ card.desc }}</p>
-                        </div>
-                    </div>
-                    <div class="quote-box">
-                        <i class="ri-double-quotes-l"></i>
-                        <p>{{ hitokoto }}</p>
-                    </div>
-                </section>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-                <!-- Skills -->
-                <section id="skills" class="section" :class="{ visible: visibleSections.skills }">
-                    <div class="section-header">
-                        <i class="ri-stack-line"></i>
-                        <h2>Technology Stack</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="tech-categories">
-                        <div v-for="category in skills" :key="category.name" class="tech-category">
-                            <h3><i :class="category.icon"></i> {{ category.name }}</h3>
-                            <div class="tech-items">
-                                <div v-for="item in category.items" :key="item.name" class="tech-item"
-                                    :data-level="item.level">
-                                    <span class="tech-name">{{ item.name }}</span>
-                                    <div class="tech-bar">
-                                        <div class="tech-progress"
-                                            :style="{ width: visibleSections.skills ? item.level + '%' : 0 }"></div>
-                                    </div>
-                                    <span class="tech-level">{{ item.levelName }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Projects -->
-                <section id="projects" class="section" :class="{ visible: visibleSections.projects }">
-                    <div class="section-header">
-                        <i class="ri-folder-fill"></i>
-                        <h2>Core Projects</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="projects-grid">
-                        <div v-for="project in projects" :key="project.title" class="project-card">
-                            <div class="project-header">
-                                <i :class="project.icon"></i>
-                                <h3>{{ project.title }}</h3>
-                            </div>
-                            <p class="project-desc">{{ project.desc }}</p>
-                            <div class="project-tags">
-                                <span v-for="tag in project.tags" :key="tag">{{ tag }}</span>
-                            </div>
-                            <div class="project-metrics">
-                                <div v-for="metric in project.metrics" :key="metric.label" class="metric">
-                                    <span class="metric-value">{{ metric.value }}</span>
-                                    <span class="metric-label">{{ metric.label }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Experience -->
-                <section id="experience" class="section" :class="{ visible: visibleSections.experience }">
-                    <div class="section-header">
-                        <i class="ri-time-line"></i>
-                        <h2>Experience</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="timeline">
-                        <div v-for="(item, index) in experience" :key="index" class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-date">{{ item.date }}</div>
-                                <h3>{{ item.title }}</h3>
-                                <p class="timeline-company">{{ item.company }}</p>
-                                <p class="timeline-desc">{{ item.desc }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Stats -->
-                <section id="stats" class="section section-stats" :class="{ visible: visibleSections.stats }">
-                    <div class="stats-grid">
-                        <div v-for="stat in stats" :key="stat.label" class="stat-item">
-                            <div class="stat-number" :id="stat.id || null">{{ stat.value }}</div>
-                            <div class="stat-label">{{ stat.label }}</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Poetry -->
-                <section id="poetry" class="section section-poetry" :class="{ visible: visibleSections.poetry }">
-                    <div class="poetry-box">
-                        <i class="ri-quill-pen-line"></i>
-                        <p>{{ poetry }}</p>
-                    </div>
-                </section>
-
-                <!-- Links -->
-                <section id="links" class="section" :class="{ visible: visibleSections.links }">
-                    <div class="section-header">
-                        <i class="ri-link"></i>
-                        <h2>Resources</h2>
-                        <span class="section-line"></span>
-                    </div>
-                    <div class="links-grid">
-                        <a v-for="link in resourceLinks" :key="link.name" :href="link.url" target="_blank"
-                            class="link-card">
-                            <i :class="link.icon"></i>
-                            <span>{{ link.name }}</span>
-                            <p>{{ link.desc }}</p>
-                        </a>
-                    </div>
-                </section>
-            </main>
-
-            <!-- Footer -->
-            <footer id="contact" class="footer">
-                <div class="footer-content">
-                    <div class="footer-info">
-                        <h3>{{ site.name }}</h3>
-                        <p>{{ site.slogan }}</p>
-                    </div>
-                    <div class="footer-contact">
-                        <h4>Connect</h4>
-                        <div class="contact-items">
-                            <a v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank">
-                                <i :class="social.icon"></i> {{ social.name }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p class="copyright-main">&copy; 2019 - {{ currentYear }} {{ site.name }} · All Rights Reserved</p>
-                    <p class="copyright-sub">
-                        <span>Powered by Vue 3</span>
-                        <span class="divider">|</span>
-                        <span><a href="https://github.com/wexuo" target="_blank">GitHub</a></span>
-                        <span class="divider">|</span>
-                        <span>Made with <i class="ri-heart-fill"></i> in China</span>
-                    </p>
-                </div>
-            </footer>
-        </div>
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <script>
-        const { createApp, ref, reactive, onMounted, computed } = Vue;
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-        createApp({
-            setup() {
-                // ===== 站点配置 =====
-                const site = reactive({
-                    name: '未寻',
-                    slogan: '探索未知，代码为舟'
-                });
+  
 
-                // ===== 导航链接 =====
-                const navLinks = ref([
-                    { id: 'about', title: '关于' },
-                    { id: 'skills', title: '技术栈' },
-                    { id: 'projects', title: '项目' },
-                    { id: 'experience', title: '经历' },
-                    { id: 'contact', title: '联系' }
-                ]);
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="欢迎来到我的博客"></span>
+          
+        </div>
 
-                // ===== 个人信息 =====
-                const profile = reactive({
-                    name: '未寻',
-                    avatar: 'static/img/avatar.svg',
-                    title: 'Senior Backend Engineer · System Architect',
-                    bio: '专注于高并发、高可用分布式系统架构设计，深耕 Java 生态，拥抱云原生技术'
-                });
+        
+      </div>
 
-                // ===== 社交链接 =====
-                const socialLinks = ref([
-                    { name: 'GitHub', icon: 'ri-github-fill', url: 'https://github.com/wexuo' },
-                    { name: 'Email', icon: 'ri-mail-fill', url: '#' },
-                    { name: '掘金', icon: 'ri-quill-pen-fill', url: '#' },
-                    { name: '知乎', icon: 'ri-zhihu-fill', url: '#' },
-                    { name: '微信', icon: 'ri-wechat-fill', url: '#' }
-                ]);
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
 
-                // ===== 关于我 =====
-                const about = reactive({
-                    intro: '资深后端工程师，拥有多年互联网研发经验。主导过多个核心业务系统的架构设计与落地实施，在高并发、分布式、微服务架构领域有深厚积累。',
-                    cards: [
-                        { icon: 'ri-code-s-slash-fill', title: '服务端开发', desc: '精通 Java，熟练掌握 Go、Python，具备多语言混合编程能力，专注于构建高性能服务端应用' },
-                        { icon: 'ri-cloud-fill', title: '微服务架构', desc: '精通 Spring Cloud / Dubbo 微服务体系，熟悉 Service Mesh，有大规模微服务治理与调优实战经验' },
-                        { icon: 'ri-database-2-fill', title: '数据架构', desc: '精通 MySQL 调优、Redis 缓存架构，熟悉 Elasticsearch、MongoDB、ClickHouse 等数据存储方案' },
-                        { icon: 'ri-route-fill', title: '分布式系统', desc: '熟悉分布式事务、分布式锁、一致性协议，有高并发系统设计与调优经验' },
-                        { icon: 'ri-layout-fill', title: '全栈能力', desc: '具备前端开发能力，熟练使用 Vue3、React、TypeScript，可独立完成全栈项目开发' },
-                        { icon: 'ri-smartphone-fill', title: '移动端开发', desc: '熟悉 uni-app 跨端开发框架，具备小程序、H5、App 多端统一开发能力' }
-                    ]
-                });
 
-                // ===== 技术栈 =====
-                const skills = ref([
-                    {
-                        name: '编程语言',
-                        icon: 'ri-code-s-fill',
-                        items: [
-                            { name: 'Java', level: 95, levelName: '精通' },
-                            { name: 'Python', level: 75, levelName: '熟练' },
-                            { name: 'Go', level: 65, levelName: '掌握' },
-                            { name: 'TypeScript', level: 65, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '后端框架',
-                        icon: 'ri-leaf-fill',
-                        items: [
-                            { name: 'Spring Boot / Cloud', level: 95, levelName: '精通' },
-                            { name: 'Dubbo / gRPC', level: 85, levelName: '熟练' },
-                            { name: 'MyBatis / JPA', level: 85, levelName: '熟练' },
-                            { name: 'Netty / Vert.x', level: 70, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '数据存储',
-                        icon: 'ri-database-fill',
-                        items: [
-                            { name: 'MySQL', level: 90, levelName: '精通' },
-                            { name: 'Redis', level: 90, levelName: '精通' },
-                            { name: 'Elasticsearch', level: 75, levelName: '熟练' },
-                            { name: 'MongoDB / ClickHouse', level: 65, levelName: '掌握' }
-                        ]
-                    },
-                    {
-                        name: '中间件与运维',
-                        icon: 'ri-tools-fill',
-                        items: [
-                            { name: 'Kafka / RabbitMQ', level: 85, levelName: '熟练' },
-                            { name: 'Docker / K8s', level: 80, levelName: '熟练' },
-                            { name: 'Jenkins / GitLab CI', level: 75, levelName: '熟练' },
-                            { name: 'Prometheus / Grafana', level: 70, levelName: '掌握' }
-                        ]
-                    }
-                ]);
 
-                // ===== 项目经验 =====
-                const projects = ref([
-                    {
-                        icon: 'ri-shopping-bag-fill',
-                        title: '电商交易系统',
-                        desc: '负责核心交易链路开发，涵盖订单系统、库存管理、支付对接等模块。通过 Redis 缓存优化、异步削峰等手段提升系统性能，保障大促期间系统稳定运行。',
-                        tags: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ'],
-                        metrics: [
-                            { value: '10W+', label: '日均订单' },
-                            { value: '99.9%', label: '可用性' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-flashlight-fill',
-                        title: '即时通讯服务',
-                        desc: '基于 Netty 构建的 IM 服务，支持私聊、群聊、消息已读等核心功能。采用 WebSocket 长连接 + 消息队列架构，保证消息实时性和可靠性。',
-                        tags: ['Netty', 'WebSocket', 'Redis', 'Protobuf'],
-                        metrics: [
-                            { value: '5W+', label: '在线用户' },
-                            { value: '20ms', label: '平均延迟' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-search-eye-fill',
-                        title: '风控预警系统',
-                        desc: '实时风控检测系统，支持规则动态配置与热更新。通过规则引擎 + 特征库实现反欺诈、反刷单等场景，有效识别异常行为。',
-                        tags: ['Drools', 'Redis', 'MySQL', '定时任务'],
-                        metrics: [
-                            { value: '1亿+', label: '日检测量' },
-                            { value: '<100ms', label: '响应时间' }
-                        ]
-                    },
-                    {
-                        icon: 'ri-cloud-fill',
-                        title: '微服务基础架构',
-                        desc: '搭建公司微服务基础设施，包括统一网关、配置中心、链路追踪、日志收集等。基于 Spring Cloud Alibaba 体系，支撑业务服务数量持续增长。',
-                        tags: ['Spring Cloud', 'Nacos', 'Sentinel', 'SkyWalking'],
-                        metrics: [
-                            { value: '50+', label: '服务数量' },
-                            { value: '统一治理', label: '运维体系' }
-                        ]
-                    }
-                ]);
+</div>
 
-                // ===== 工作经历 =====
-                const experience = ref([
-                    { date: '2021 - 至今', title: '高级后端工程师', company: '某成长型互联网公司', desc: '负责核心业务系统架构设计与优化，主导微服务改造，从零搭建监控运维体系' },
-                    { date: '2019 - 2021', title: 'Java 后端工程师', company: '某科技公司', desc: '参与电商平台后端开发，负责订单、支付等核心模块，独立完成多个业务需求' },
-                    { date: '2015 - 2019', title: '计算机科学与技术', company: '某大学 · 本科', desc: '系统学习计算机基础，积极参与技术社区，开源项目贡献者' }
-                ]);
+  </header>
 
-                // ===== 统计数据 =====
-                const stats = ref([
-                    { value: '5', label: '年研发经验' },
-                    { value: '50+', label: '技术博客' },
-                    { value: '100W+', label: '代码行数' },
-                    { value: '', label: '访客数', id: 'busuanzi_value_site_uv' }
-                ]);
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-                // ===== 资源链接 =====
-                const resourceLinks = ref([
-                    { name: 'LeetCode', icon: 'ri-code-box-line', url: 'https://leetcode-cn.com/problemset/all/', desc: '算法训练' },
-                    { name: '剑指 Offer', icon: 'ri-book-open-line', url: 'https://www.nowcoder.com/ta/coding-interviews', desc: '面试宝典' },
-                    { name: 'GitHub', icon: 'ri-github-fill', url: 'https://github.com/', desc: '开源社区' }
-                ]);
+<h1 style="display: none">DylanWalker 的博客</h1>
 
-                // ===== 动态数据 =====
-                const typedText = ref('');
-                const hitokoto = ref('加载中...');
-                const poetry = ref('加载中...');
-                const currentYear = computed(() => new Date().getFullYear());
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2026/10/21/hello-world/" target="_self">
+          欢迎来到我的博客
+        </a>
+      </h2>
 
-                // ===== 可见区域状态 =====
-                const visibleSections = reactive({
-                    about: false, skills: false, projects: false,
-                    experience: false, stats: false, poetry: false, links: false
-                });
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2026/10/21/hello-world/" target="_self">
+        <div>
+          你好，欢迎来到我的博客！ 这是一个基于 Hexo 和 Fluid 主题搭建的个人博客，托管在 GitHub Pages 上。以后我会在这里记录学习心得、生活随笔和各种想法。 如果你看到这篇文章，说明博客已经成功上线了。 关于本站 框架：Hexo 主题：Fluid 托管：GitHub Pages 写作：Markdown  感谢你的来访，欢迎常来看看。
+        </div>
+      </a>
 
-                // ===== 打字效果 =====
-                const typeWriter = () => {
-                    const texts = ['架构改变世界', 'Code is Poetry', 'Stay Hungry, Stay Foolish', '高并发 · 高可用 · 高扩展'];
-                    let textIndex = 0, charIndex = 0, isDeleting = false;
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-10-21 12:00" pubdate>
+              2026-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
 
-                    const type = () => {
-                        const current = texts[textIndex];
-                        typedText.value = isDeleting ? current.substring(0, --charIndex) : current.substring(0, ++charIndex);
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%97%A5%E5%B8%B8/" class="category-chain-item">日常</a>
+  
+  
 
-                        if (!isDeleting && charIndex === current.length) {
-                            setTimeout(type, 2000);
-                            isDeleting = true;
-                            return;
-                        }
-                        if (isDeleting && charIndex === 0) {
-                            isDeleting = false;
-                            textIndex = (textIndex + 1) % texts.length;
-                        }
-                        setTimeout(type, isDeleting ? 35 : 75);
-                    };
-                    type();
-                };
+      </span>
+    
+  
+</span>
 
-                // ===== 粒子背景 =====
-                const initParticles = () => {
-                    const canvas = document.getElementById('particles');
-                    if (!canvas) return;
-                    const ctx = canvas.getContext('2d');
-                    let particles = [];
-                    let mouse = { x: null, y: null };
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    const resize = () => {
-                        canvas.width = window.innerWidth;
-                        canvas.height = window.innerHeight;
-                    };
-                    resize();
-                    window.addEventListener('resize', resize);
-                    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
-                    class Particle {
-                        constructor() {
-                            this.x = Math.random() * canvas.width;
-                            this.y = Math.random() * canvas.height;
-                            this.vx = (Math.random() - 0.5) * 0.6;
-                            this.vy = (Math.random() - 0.5) * 0.6;
-                            this.r = Math.random() * 2 + 1;
-                            this.color = Math.random() > 0.5 ? '88, 166, 255' : '163, 113, 247';
-                        }
-                        update() {
-                            this.x += this.vx;
-                            this.y += this.vy;
-                            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                            if (mouse.x && mouse.y) {
-                                const dx = mouse.x - this.x, dy = mouse.y - this.y;
-                                const d = Math.sqrt(dx * dx + dy * dy);
-                                if (d < 150) { this.x -= dx * 0.01; this.y -= dy * 0.01; }
-                            }
-                        }
-                        draw() {
-                            ctx.beginPath();
-                            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                            ctx.fillStyle = `rgba(${this.color}, 0.8)`;
-                            ctx.shadowBlur = 10;
-                            ctx.shadowColor = `rgba(${this.color}, 0.5)`;
-                            ctx.fill();
-                            ctx.shadowBlur = 0;
-                        }
-                    }
 
-                    const init = () => {
-                        const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
-                        for (let i = 0; i < count; i++) particles.push(new Particle());
-                    };
 
-                    const animate = () => {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        particles.forEach(p => { p.update(); p.draw(); });
-                        for (let i = 0; i < particles.length; i++) {
-                            for (let j = i + 1; j < particles.length; j++) {
-                                const dx = particles[i].x - particles[j].x;
-                                const dy = particles[i].y - particles[j].y;
-                                const d = Math.sqrt(dx * dx + dy * dy);
-                                if (d < 120) {
-                                    const gradient = ctx.createLinearGradient(
-                                        particles[i].x, particles[i].y,
-                                        particles[j].x, particles[j].y
-                                    );
-                                    gradient.addColorStop(0, `rgba(${particles[i].color}, ${0.4 - d / 300})`);
-                                    gradient.addColorStop(1, `rgba(${particles[j].color}, ${0.4 - d / 300})`);
-                                    ctx.beginPath();
-                                    ctx.moveTo(particles[i].x, particles[i].y);
-                                    ctx.lineTo(particles[j].x, particles[j].y);
-                                    ctx.strokeStyle = gradient;
-                                    ctx.lineWidth = 0.8;
-                                    ctx.stroke();
-                                }
-                            }
-                        }
-                        requestAnimationFrame(animate);
-                    };
-                    init();
-                    animate();
-                };
 
-                // ===== 滚动监听 =====
-                const initScrollObserver = () => {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            const id = entry.target.id;
-                            if (id && visibleSections.hasOwnProperty(id)) {
-                                visibleSections[id] = entry.isIntersecting;
-                            }
-                        });
-                    }, { threshold: 0.15 });
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
 
-                    document.querySelectorAll('.section').forEach(section => {
-                        observer.observe(section);
-                    });
-                };
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-                // ===== 加载外部数据 =====
-                const loadExternalData = () => {
-                    // 一言
-                    fetch('https://v1.hitokoto.cn')
-                        .then(r => r.json())
-                        .then(d => { hitokoto.value = d.hitokoto + ' —— ' + (d.from || ''); })
-                        .catch(() => { hitokoto.value = '代码如诗，人生如歌。'; });
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                    // 诗词
-                    const js = document.createElement('script');
-                    js.src = 'https://sdk.jinrishici.com/v2/browser/jinrishici.js';
-                    js.onload = () => {
-                        jinrishici.load(r => { poetry.value = r.data.content; });
-                    };
-                    document.body.appendChild(js);
+    
 
-                    // 访客统计
-                    const bs = document.createElement('script');
-                    bs.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
-                    bs.async = true;
-                    document.body.appendChild(bs);
-                };
+    
+  </main>
 
-                onMounted(() => {
-                    typeWriter();
-                    initParticles();
-                    initScrollObserver();
-                    loadExternalData();
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
 
-                    // 标签页切换
-                    document.addEventListener('visibilitychange', () => {
-                        document.title = document.hidden ? '(๑•́ ₃•̀) 页面走丢了' : `${site.name} | Senior Backend Engineer`;
-                    });
+  </footer>
 
-                    console.log(`%c⚡ ${site.name} - 探索未知`, 'color:#58a6ff;font-size:16px;font-weight:bold');
-                });
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
-                return {
-                    site, navLinks, profile, socialLinks, about, skills, projects,
-                    experience, stats, resourceLinks, typedText, hitokoto, poetry,
-                    currentYear, visibleSections
-                };
-            }
-        }).mount('#app');
-    </script>
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
-
 </html>
