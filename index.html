@@ -243,8 +243,17 @@
   <footer>
     © 2026 · Designed with an Apple-inspired color system.
   </footer>
-</body>
+  <script>
+    const action = document.getElementById('greeting-action');
+    const personalMessage = document.getElementById('personal-message');
+
+    action.addEventListener('click', () => {
+      action.textContent = '很高兴认识你';
+      personalMessage.hidden = false;
+    });
+  </script></body>
 </html>
+
 
 
 
