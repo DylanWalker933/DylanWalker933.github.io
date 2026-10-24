@@ -47,3 +47,42 @@ html[data-user-color-scheme="dark"] #board {
   z-index: 9999;
   transition: width 0.08s linear;
 }
+
+/* 首页标题可读性 */
+.banner-text .h2 {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* 首页文章卡片 */
+.index-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.index-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.10);
+}
+
+html[data-user-color-scheme="dark"] .index-card {
+  background: rgba(37, 45, 56, 0.5);
+}
+
+/* 图片圆角与阴影 */
+.index-img img {
+  border-radius: 0.75rem;
+}
+
+.markdown-body img {
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* 引用块 */
+.markdown-body blockquote {
+  border-left: 3px solid #29d;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
