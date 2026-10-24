@@ -35,3 +35,15 @@ body {
 html[data-user-color-scheme="dark"] #board {
   background-color: rgba(37, 45, 56, 0.82);
 }
+
+/* 阅读进度条 */
+#read-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #29d;
+  z-index: 9999;
+  transition: width 0.08s linear;
+}
